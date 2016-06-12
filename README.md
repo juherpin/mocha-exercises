@@ -9,3 +9,8 @@
 ## Etape 2 (Chai assertions)
 
 1. Compléter les "assertions Chai" dans le fichier calculator.spec.js
+
+## Etape 3 (Calculator)
+
+1. Compléter dans le fichier calculator.spec.js la section ["add() method"]
+2. Compléter le fichier calculator.js ["verboseAdd" method]
