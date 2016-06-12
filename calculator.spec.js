@@ -33,33 +33,39 @@ describe('calculator class', function() {
 
   describe('add() method', function() {
 
+    var wrapper;
+
+    afterEach(() => {
+      if(wrapper) wrapper.restore();
+    });
+
     it('should be able to add two integers', () => {
-      // Use Calculator "add" method to check that 2+2=4
+      expect(Calculator.add(2, 2)).to.equal(4);
     });
 
     it('should be able to add negative numbers', () => {
-      // Use Calculator "add" method to check that (-1)+0=-1
+      expect(Calculator.add(-1, 0)).to.equal(-1);
     });
 
     it('should be able to add floats', () => {
-      // Use Calculator "add" method to check that 1.5+1.7=3.2
+      expect(Calculator.add(1.5, 1.7)).to.equal(3.2);
     });
 
     it('should work only with numbers', () => {
-      // 1) Test that 2+'a' throws an exception
-      // 2) Test that null + 1 throws an exception
-      // 3) Test that undefined + null throws an exception
+      expect(() => { Calculator.add(2, 'a') }).to.throw();
+      expect(() => { Calculator.add(null, 1) }).to.throw();
+      expect(() => { Calculator.add(undefined, null) }).to.throw();
     });
 
     it('should call the checkNumbers method', () => {
-      // Spy the checkNumbers method to check it's called when doing
-      // an addition like 1+1
-      // checkNumbers method should be called only once
+      wrapper = sinon.spy(Calculator, 'checkNumbers');
+      Calculator.add(1, 1);
+      expect(wrapper.callCount).to.equal(1);
     });
 
     it('should throw an error if the checkNumbers method returns false', () => {
-      // Stub checkNumbers method to return FALSE
-      // Test that an exception is triggered when calling an addition like 1+1
+      wrapper = sinon.stub(Calculator, 'checkNumbers').returns(false);
+      expect(() => { Calculator.add(1, 1) }).to.throw();
     });
 
   });

@@ -25,9 +25,8 @@ class Calculator {
     else return num1 / num2;
   }
 
-  // @todo
   static verboseAdd(num1, num2) {
-    return null;
+    return `${ num1 } + ${ num2 } = ${ Calculator.add(num1, num2) }`;
   }
 
 }
